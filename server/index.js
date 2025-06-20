@@ -27,5 +27,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/mentors", require("./routes/mentors"));
 
 const server = app.listen(PORT, "::1", () => {
+  console.log("the mongo url", MONGO_URL);
   console.log(`🚀 Server listening on port ${PORT} (::1)`);
 });
