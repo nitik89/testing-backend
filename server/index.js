@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 const { MONGO_URL } = process.env;
 
-mongoose.connect(MONGO_URL);
+mongoose.connect(process.env.MONGO_URL);
 
 mongoose.connection.on("connected", () => {
   console.log("✅ Connected to MongoDB");
@@ -27,6 +27,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/mentors", require("./routes/mentors"));
 
 const server = app.listen(PORT, "::1", () => {
-  console.log("the mongo url", MONGO_URL);
+  console.log(process.env);
+  console.log("the mongo url", process.env.MONGO_URL);
   console.log(`🚀 Server listening on port ${PORT} (::1)`);
 });
